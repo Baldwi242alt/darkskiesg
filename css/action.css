@@ -1,35 +1,61 @@
+/* =====================================================================
+   action.css — Dark Skies SG (ACTION PLAN PAGE STYLES)
+   ---------------------------------------------------------------------
+   Purpose : Styles unique to action.html. Loaded AFTER global.css.
+   Sections covered:
+     1. "Why this matters to me" two-column section
+     2. 3-month timeline (#timeline / #timeline-grid)
+     3. Outcomes grid (3 coloured cards: home / community / sky)
+     4. "You impact" grid (4 numbered action cards)
+     5. Map section (unused in current HTML but kept for future)
+   ===================================================================== */
+
+
+/* =====================================================================
+   1. "WHY THIS MATTERS TO ME" — Two-column personal-story section
+   ===================================================================== */
 .why_matters > div {
-    max-width: 71.875rem; /* 1150px */
+    max-width: 71.875rem;          /* 1150px — readable line length */
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Equal-width columns */
     gap: 2rem;
-    align-items: start;
+    align-items: start;            /* Top-align columns */
 }
 
+/* Override the default global h2 size — slightly smaller here so the
+   single-line headline fits without wrapping */
 .why_matters h2 {
     font-size: 2rem; /* 32px */
     white-space: nowrap;
     margin-bottom: 2rem;
 }
-.why_matters h2 span { color: #A29BFE; }
+.why_matters h2 span { color: #A29BFE; } /* Spans get violet accent */
 
-.why_matters p strong { color: #F0F0FF; }
+.why_matters p strong { color: #F0F0FF; } /* Bright white for <strong> */
 
+/* Right-column image (Cameron Highlands Milky Way photo) */
 figure img {
     width: 100%;
     height: auto;
-    border-radius: 0.5rem; /* 8px */
-    margin-top: 6.5rem;
+    border-radius: 0.5rem;         /* 8px */
+    margin-top: 6.5rem;            /* Aligns image vertically with text body */
 }
 
 figcaption { font-size: 1.05rem; }
 figcaption span { font-size: 0.75rem; }
 
+
+/* =====================================================================
+   2. TIMELINE — 3-month action plan
+   ---------------------------------------------------------------------
+   Layout: 3 columns. A horizontal gradient line runs across the top
+   (drawn via ::before) and the three coloured circles sit on top of it.
+   ===================================================================== */
 #timeline {
     text-align: center;
     margin: auto;
-    max-width: 87.5rem; /* 1400px */
+    max-width: 87.5rem;            /* 1400px */
     width: 100%;
     padding: 0 5rem;
     box-sizing: border-box;
@@ -44,30 +70,37 @@ figcaption span { font-size: 0.75rem; }
     box-sizing: border-box;
     margin: auto;
     margin-top: 3rem;
-    position: relative;
+    position: relative;            /* Anchor for the ::before gradient line */
 }
 
 /* Two gradient line segments with a gap around the middle circle */
+/* Horizontal gradient connector line linking the three milestone circles.
+   `left: calc(16.66% - 30px)` and the matching `right` value start the
+   line at the centre of column 1 and end it at the centre of column 3,
+   so the line visually passes through all three circle centres. */
 #timeline-grid::before {
     content: "";
     position: absolute;
-    top: 2rem;
+    top: 2rem;                     /* Aligns with circle vertical centre */
     left: calc(16.66% - 1.875rem);  /* 30px */
     right: calc(16.66% - 1.875rem);
-    height: 0.1875rem; /* 3px */
+    height: 0.1875rem;             /* 3px */
+    /* Gradient transitions violet → blue → green across the three months */
     background: linear-gradient(to right, #A29BFE, #74B9FF, #34d399);
-    z-index: 0;
+    z-index: 0;                    /* Sits behind the circles */
 }
 
+/* Each timeline column = a vertical stack: circle + heading + list */
 .timeline-col {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     position: relative;
-    z-index: 1;
+    z-index: 1;                    /* Above the gradient line */
 }
 
+/* Wrapper around the circle + month label */
 .milestone {
     position: relative;
     z-index: 1;
@@ -77,49 +110,56 @@ figcaption span { font-size: 0.75rem; }
     margin-bottom: 2rem;
 }
 
+/* Month heading ("MONTH 1") */
 .milestone h3 {
     margin: 0.75rem 0 0.25rem;
     font-size: 1rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.1em;         /* Wide tracking for ALL-CAPS style */
     color: #fff;
 }
 
+/* Date subtitle ("May 2026") */
 .milestone p {
     margin: 0;
     font-size: 0.85rem;
     color: #a29bfe;
 }
 
+/* Three circular milestone badges (M1, M2, M3) — shared base style */
 #timeline-circle1,
 #timeline-circle2,
 #timeline-circle3 {
     display: flex;
-    border-radius: 50%;
+    border-radius: 50%;            /* Perfect circle */
     border: 0.125rem solid #A29BFE; /* 2px */
-    background-color: #07071A;
-    width: 3.75rem;  /* 60px */
+    background-color: #07071A;     /* Dark fill so the gradient line shows through behind */
+    width: 3.75rem;                /* 60px */
     height: 3.75rem;
     justify-content: center;
     align-items: center;
     color: #A29BFE;
     font-weight: bold;
+    /* Outer glow — first colour close, second further (soft halo) */
     box-shadow: 0 0 0.5rem #A29BFE, 0 0 1rem #A29BFE; /* 8px, 16px */
     position: relative;
     z-index: 1;
 }
 
+/* Circle 2 (June) — overrides to BLUE accent, matching gradient mid-stop */
 #timeline-circle2 {
     border-color: #74B9FF;
     color: #74B9FF;
     box-shadow: 0 0 0.5rem #74B9FF, 0 0 1rem #74B9FF;
 }
 
+/* Circle 3 (July) — overrides to GREEN accent, matching gradient end-stop */
 #timeline-circle3 {
     border-color: #34d399;
     color: #34d399;
     box-shadow: 0 0 0.5rem #34d399, 0 0 1rem #34d399;
 }
 
+/* Timeline action lists — remove default list padding */
 #timeline ul {
     padding-left: 0;
     margin: 0;
@@ -127,11 +167,13 @@ figcaption span { font-size: 0.75rem; }
     width: 100%;
 }
 
+/* Each list item: tall cell with bottom + right border to create a
+   grid-like table look across the three columns */
 #timeline li {
     padding-left: 1.5rem;
     padding-right: 2rem;
     border-bottom: 1px solid rgba(162, 155, 254, .25);
-    min-height: 5.5rem;
+    min-height: 5.5rem;            /* Equal-height rows across columns */
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -139,17 +181,25 @@ figcaption span { font-size: 0.75rem; }
     border-right: 1px solid rgba(162, 155, 254, .25);
 }
 
+/* The third column ("M3") shouldn't have a trailing right-border */
 #m3 li { border-right: none; }
+
+/* Last item in any column has no bottom-border (cleaner edge) */
 #timeline li:last-child { border-bottom: none; }
 
+/* Decorative violet ✦ star bullet before each timeline action item */
 #timeline li::before {
     content: "✦";
     color: #a29bfe;
     font-size: 0.7rem;
     margin-right: 0.75rem;
-    flex-shrink: 0;
+    flex-shrink: 0;                /* Prevent bullet from being squashed */
 }
 
+
+/* =====================================================================
+   3. OUTCOMES GRID — three coloured "what this will achieve" cards
+   ===================================================================== */
 #outcomes-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -158,30 +208,41 @@ figcaption span { font-size: 0.75rem; }
     margin: 0 auto;
 }
 
+/* Each outcome card = a vertical grid with header row + 3 body rows */
 #outcomes-grid > div {
     display: grid;
+    /* Header row is shorter than the body rows (1fr vs 2fr each) */
     grid-template-rows: 1fr 2fr 2fr 2fr;
     border: 1px solid rgba(162, 155, 254, .25);
-    border-radius: 0.625rem; /* 10px */
+    border-radius: 0.625rem;       /* 10px */
 }
+
+/* Each body cell inside an outcome card */
 #outcomes-grid > div > div {
     border-bottom: 1px solid rgba(162, 155, 254, .25);
     padding: 1rem 1rem;
-    text-indent: 1.25rem; /* 20px */
-    font-size: 1.25rem;   /* 20px */
+    text-indent: 1.25rem;          /* 20px — indent text from the bullet */
+    font-size: 1.25rem;            /* 20px */
 }
+
+/* Add a decorative ✦ bullet before each body cell, but NOT the header rows.
+   The :not() exclusion is important — header cells have their own styling. */
 #outcomes-grid > div > div:not(#home-header, #sc-header, #impact-sky-header):before {
     content: "✦ ";
     margin-right: 0.5rem;
 }
 
+/* Shared base style for all three coloured card headers */
 #home-header, #sc-header, #impact-sky-header {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+/* Header 1: "At Home" — blue/indigo gradient */
 #home-header {
     background: linear-gradient(to right, #3c366b 0%, #4c51bf 100%);
+    /* Only round the TOP corners (bottom is connected to the body cells) */
     border-top-left-radius: 0.625rem;
     border-top-right-radius: 0.625rem;
     color: white;
@@ -191,6 +252,7 @@ figcaption span { font-size: 0.75rem; }
     text-align: center;
 }
 
+/* Header 2: "School & Community" — magenta/pink gradient */
 #sc-header {
     background: linear-gradient(to right, #6b1e4f 0%, #97266d 100%);
     border-top-left-radius: 0.625rem;
@@ -201,6 +263,8 @@ figcaption span { font-size: 0.75rem; }
     padding: 0.85rem;
     text-align: center;
 }
+
+/* Header 3: "For the Night Sky" — teal/dark-cyan gradient */
 #impact-sky-header {
     background: linear-gradient(to right, #0f3f3f 0%, #1a5a5b 100%);
     border-top-left-radius: 0.625rem;
@@ -211,52 +275,115 @@ figcaption span { font-size: 0.75rem; }
     padding: 0.85rem;
     text-align: center;
 }
+
+/* Remove the bottom-border on the LAST cell of each card so it sits
+   flush against the card's outer border */
 #outcomes-grid > div > div:last-child { border: none; }
 
+/* (Unused-helper class kept for safety) */
 .impact-header {
     text-align: center;
     margin-bottom: 1.5rem;
 }
 
+
+/* =====================================================================
+   4. "YOU CAN MAKE A DIFFERENCE" — four numbered action cards
+   ===================================================================== */
 #you-impact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* Four equal columns */
     gap: 2rem;
 }
 
+/* Individual action card — dark fill, soft violet border, lift on hover */
 .you-impact-cards {
     background-color: #12123a;
     border: 1px solid rgba(162, 155, 254, 0.25);
     border-radius: 1.25rem; 
     padding: 0.65rem 0.75rem;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .you-impact-cards h3 { font-size: 1rem; }
 
+/* Hover for embedded links keeps them in the violet palette */
 .you-impact-cards a:hover { color: #A29BFE; }
 
+/* Card hover: slight upward lift + soft violet glow */
 .you-impact-cards:hover {
     transform: translateY(-0.25rem); 
     box-shadow: 0 0 1.5rem rgba(162, 155, 254, 0.25); 
 }
 
+/* Card sub-heading colour override (used on card 1 only) */
 .impact-sub-header {
     color: #F0F0FF;
     font-weight: bold;
 }
+
+/* Wrapper around the numbered badge — centres it horizontally */
 .circle {
     display: flex;
     justify-content: center;
     margin-bottom: 0.5rem;
 }
 
+/* The numbered circle itself (1, 2, 3, 4) */
 .circle span {
     display: flex;
     border-radius: 50%;
-    background-color: rgba(162, 155, 254, 0.15);
-    width: 1.875rem;  
+    background-color: rgba(162, 155, 254, 0.15); /* Translucent violet */
+    width: 1.875rem;               /* 30px */
     height: 1.875rem;
     justify-content: center;
+}
+
+
+/* =====================================================================
+   5. MAP SECTION (currently unused in HTML, kept for future use)
+   ---------------------------------------------------------------------
+   These styles would frame an embedded Google Map iframe with a glow
+   border. The negative top offset (-58px) is a common trick to hide
+   the Google Maps top header bar that appears in embeds.
+   ===================================================================== */
+.map-section {
+    padding: 5rem 10rem;
+}
+
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    margin-top: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(162, 155, 254, 0.3);
+    box-shadow: 0 0 40px rgba(162, 155, 254, 0.15); /* Soft violet glow */
+    overflow: hidden;              /* Clip the negatively-offset iframe */
+}
+
+/* Pull the iframe up by 58px to hide Google's header banner;
+   then make it 58px taller to compensate so the visible map fills the container */
+.map-container iframe {
+    position: absolute;
+    top: -58px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 58px);
+    border: none;
+}
+
+.map-credit {
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    padding-top: 0.75rem;
+}
+
+/* NOTE: --violet here references a CSS custom property that isn't
+   defined anywhere in the project — would fall back to inherited colour.
+   Could be replaced with the literal #a29bfe. */
+.map-credit a {
+    color: var(--violet);
 }

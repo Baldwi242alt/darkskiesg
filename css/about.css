@@ -1,10 +1,28 @@
+/* =====================================================================
+   about.css — Dark Skies SG (ABOUT ME PAGE STYLES)
+   ---------------------------------------------------------------------
+   Purpose : Styles unique to about.html. Loaded AFTER global.css.
+   Sections covered:
+     1. Profile card (photo + bio + socials)
+     2. "My passion + experiences" two-column section
+     3. Experiences vertical timeline (.exp-timeline)
+     4. Vision section (quote + 3 vision pillar cards)
+     5. FAQ accordion (native <details>/<summary>)
+   ===================================================================== */
+
+
+/* =====================================================================
+   1. PROFILE CARD — photo on the left, biographical text on the right
+   ===================================================================== */
 .profile {
     border: 1px solid rgba(162, 155, 254, 0.25);
 }
+
+/* Inner card with two-column grid (fixed photo column + flexible text column) */
 .profile > div {
     background-color: #12123A;
     display: grid;
-    grid-template-columns: 17.5rem 1fr; 
+    grid-template-columns: 17.5rem 1fr; /* Photo column = 280px, text column = remaining */
     gap: 2rem;
     padding: 3rem 2rem;
     margin: auto;
@@ -13,15 +31,19 @@
     border-radius: 1.5rem;
     justify-content: start;
 }
+
+/* Profile picture — large square with slightly rounded corners */
 .pfp {
     margin-top: 0.35rem;
-    border-radius: 1vw;
+    border-radius: 1vw;            /* Viewport-relative — scales with window width */
     width: 18.5rem;
     height:18.5rem;
 }
 
+/* Spacing between paragraphs in the bio text */
 .profile-description { margin-bottom: 2vh; }
 
+/* "Socials" row — email / phone / LinkedIn in a 3-column grid */
 .socials {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -29,13 +51,19 @@
     border: 1px solid rgba(162, 155, 254, 0.25);
     border-radius: 0.5rem;
     padding: 1.5rem;
+    font-style: normal;            /* Reset the italic that <address> adds by default */
 }
 
+/* Each socials cell centred; no wrap to keep "+65 88248276" on one line */
 .socials div {
     margin: auto;
     white-space: nowrap;
 }
 
+
+/* =====================================================================
+   2. "MY PASSION + MY EXPERIENCES" — Two-column section
+   ===================================================================== */
 #passion {
     width: 100%;
     display: block;
@@ -47,62 +75,88 @@
     max-width: 85%;
     margin: 0 auto;
     padding: 2rem 3rem;
-    text-align: start;
+    text-align: start;             /* Left-align (overrides any inherited centring) */
 }
 
+/* Spacing between paragraphs within each column */
 #passion div p { margin-bottom: 1rem; }
 
 #mypassion h2 { margin-bottom: 1rem; }
 
+
+/* =====================================================================
+   3. EXPERIENCES TIMELINE — vertical timeline using ::before tricks
+   ---------------------------------------------------------------------
+   Layout strategy:
+     • The <ol> has left-padding to make room for the vertical line.
+     • The line itself is drawn via .exp-timeline::before (a coloured
+       gradient bar absolutely positioned at left:0).
+     • Each year label has its own ::before dot, positioned absolutely
+       at left: -2.24rem so it lands centred on the vertical line.
+   ===================================================================== */
 .exp-timeline {
-    position: relative;
-    padding-left: 2rem;
+    position: relative;            /* Anchor for the ::before line */
+    padding-left: 2rem;            /* Reserve space for the line + dots */
     margin-top: 1.5rem;
+    list-style: none;
 }
 
+/* The vertical line itself — a violet → blue → green gradient bar */
 .exp-timeline::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 0.375rem;    
+    top: 0.375rem;                 /* Slight inset top & bottom */
     bottom: 0.375rem;
-    width: 0.125rem;  
+    width: 0.125rem;               /* 2px */
     background: linear-gradient(to bottom, #a29bfe, #60a5fa, #34d399);
 }
 
+/* Year label paragraph above each experience */
 .exp-year {
     padding: 1rem 0;
     display: block;
-    position: relative;
+    position: relative;            /* Anchor for the dot ::before */
     color: #a29bfe;
 }
+
+/* Glowing dot on each year — positioned on top of the vertical line.
+   left: -2.24rem aligns it centred on the line (1rem padding + 2rem
+   timeline padding-left, minus half the dot's width). */
 .exp-year::before {
     content: "";
     position: absolute;
     left: -2.24rem;
     top: 50%;
-    transform: translateY(-50%);
-    width: 0.625rem; 
+    transform: translateY(-50%);   /* Vertical centring */
+    width: 0.625rem;               /* 10px dot */
     height: 0.625rem;
     border-radius: 50%;
     background-color: #A29BFE;
-    border: 0.125rem solid #0d0d2b; /* 2px */
-    box-shadow: 0 0 0.5rem #a29bfe, 0 0 1rem #a29bfe;
+    border: 0.125rem solid #0d0d2b; /* Dark border so it pops against the line */
+    box-shadow: 0 0 0.5rem #a29bfe, 0 0 1rem #a29bfe; /* Soft glow halo */
 }
 
+/* SECOND timeline dot recoloured to BLUE (matching the gradient mid-point) */
 .exp-item:nth-child(2) .exp-year::before {
     background-color: #60a5fa;
     box-shadow: 0 0 0.5rem #60a5fa, 0 0 1rem #60a5fa;
 }
-
 .exp-item:nth-child(2) .exp-year { color: #60a5fa; }
 
+/* THIRD timeline dot recoloured to GREEN (matching the gradient end) */
 .exp-item:nth-child(3) .exp-year { color: #34d399; }
 .exp-item:nth-child(3) .exp-year::before {
     background-color: #34d399;
     box-shadow: 0 0 0.5rem #34d399, 0 0 1rem #34d399;
 }
 
+
+/* =====================================================================
+   4. VISION SECTION — quote + 3 vision-pillar cards
+   ===================================================================== */
+
+/* Pull-quote — centred italic Cinzel text in a violet-bordered box */
 .vision-quote {
     background-color: #12123A;
     padding: 2rem 0.5rem;
@@ -114,52 +168,73 @@
 }
 .vision-quote p {
     color: #A29BFE;
-    font-family: 'Cinzel', sans-serif;
+    font-family: 'Cinzel', sans-serif; /* Serif quote — matches headings */
     font-size: 1.1rem;
     font-style: italic;
     line-height: 1.8;
+    margin: 0;
 }
 
+/* Three-column grid of vision pillar cards */
 #vision-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.5rem;
     margin: 0 auto;
-    max-width: 93.75rem; 
+    max-width: 93.75rem;           /* 1500px max */
     margin-top: 4rem;
     text-align: center;
 }
 
+/* Each vision card */
 #vision-grid div {
     background-color: #12123A;
     border: 1px solid rgba(162, 155, 254, 0.25);
     border-radius: 1.25rem; 
     padding: 2rem 2rem;
-    transition: transform 0.5s ease, border 0.3s ease;
+    transition: transform 0.5s ease, border 0.5s ease;
 }
 
+/* Push the "Purpose:" paragraph down to the bottom of the card */
+.purpose{
+    margin-top: 3rem;
+}
+
+/* The big emoji icon at the top of each vision card */
 .vision-logo {
     margin-bottom: 2rem;
     font-size: 3rem;
 }
 
+/* Vision card hover: lift up + violet border + violet glow */
 #vision-grid div:hover {
-    transform: translateY(-0.9375rem); 
+    transform: translateY(-0.9375rem);  /* 15px lift */
     border: 1px solid #A29BFE;
     box-shadow: 0 0 1.5rem rgba(162, 155, 254, 0.25);
 }
+
+
+/* =====================================================================
+   5. FAQ — Native <details>/<summary> accordion
+   ---------------------------------------------------------------------
+   No JS needed — browsers handle expand/collapse automatically.
+   The [open] attribute is added by the browser when an item is opened,
+   which we hook into to rotate the chevron and brighten the colours.
+   ===================================================================== */
 
 /* ── FAQ ─────────────────────────────────────────── */
 #faq {
     padding: 5rem 1.5rem;
 }
 
+/* Centre the FAQ section header and constrain its width */
 #faq .section-head {
     max-width: 780px;
     margin: 0 auto 3rem;
     text-align: center;
 }
 
+/* Stack of FAQ items in a flex column */
 .faq-list {
     max-width: 780px;
     margin: 0 auto;
@@ -168,27 +243,30 @@
     gap: 0.875rem;
 }
 
+/* Individual FAQ item (collapsed state) */
 details.faq-item {
     border: 1px solid rgba(167, 139, 250, 0.15);
     border-radius: 0.75rem;
     background: rgba(20, 14, 40, 0.6);
-    overflow: hidden;
+    overflow: hidden;              /* Hide answer overflow before opening */
     transition: border-color 0.3s, background 0.3s;
 }
 
+/* Open state — brighter border + slightly more saturated background */
 details.faq-item[open] {
     border-color: rgba(167, 139, 250, 0.45);
     background: rgba(30, 18, 60, 0.8);
 }
 
+/* Summary row (the always-visible "question" bar that's clickable) */
 details.faq-item summary {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Question on left, chevron on right */
     gap: 1rem;
     padding: 1.2rem 1.5rem;
     cursor: pointer;
-    list-style: none;
+    list-style: none;              /* Remove the default disclosure triangle */
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
     font-size: 0.975rem;
@@ -196,22 +274,26 @@ details.faq-item summary {
     transition: color 0.2s;
 }
 
+/* WebKit-specific reset for the default disclosure triangle in Safari/Chrome */
 details.faq-item summary::-webkit-details-marker {
     display: none;
 }
 
+/* When open, slightly shift the summary text colour to indicate state */
 details.faq-item[open] summary {
     color: #c4b5fd;
 }
 
+/* Left side of the summary: small icon + question text in a row */
 .faq-q-text {
     display: flex;
     align-items: center;
     gap: 0.875rem;
 }
 
+/* Round icon badge for each FAQ question (?, ☁, 💡, 🏛, 📱, etc.) */
 .faq-icon {
-    flex-shrink: 0;
+    flex-shrink: 0;                /* Don't squash the circle */
     width: 1.9rem;
     height: 1.9rem;
     border-radius: 50%;
@@ -225,27 +307,32 @@ details.faq-item[open] summary {
     transition: background 0.3s, border-color 0.3s;
 }
 
+/* Icon brightens when the FAQ item is open */
 details.faq-item[open] .faq-icon {
     background: rgba(167, 139, 250, 0.2);
     border-color: rgba(167, 139, 250, 0.5);
 }
 
+/* Chevron (down-arrow SVG) on the right of each summary row */
 .faq-chevron {
     flex-shrink: 0;
     width: 1.1rem;
     height: 1.1rem;
     color: #7c6fa0;
-    transition: transform 0.3s ease, color 0.2s;
+    transition: transform 0.3s ease, color 0.2s; /* Smooth rotation */
 }
 
+/* When open: chevron rotates 180° (points up) + brightens to violet.
+   This gives a clear visual cue that the panel is expanded. */
 details.faq-item[open] .faq-chevron {
     transform: rotate(180deg);
     color: #a78bfa;
 }
 
+/* FAQ answer body (revealed when <details> is open) */
 .faq-answer {
     padding: 0 1.5rem 1.4rem 1.5rem;
-    border-top: 1px solid rgba(167, 139, 250, 0.1);
+    border-top: 1px solid rgba(167, 139, 250, 0.1); /* Subtle divider */
 }
 
 .faq-answer p {
@@ -255,18 +342,15 @@ details.faq-item[open] .faq-chevron {
     margin: 1rem 0 0;
 }
 
-.faq-answer a {
-    color: #a78bfa;
-    text-decoration: underline;
-    text-decoration-color: rgba(167, 139, 250, 0.35);
-    text-underline-offset: 3px;
-}
 
+
+/* Bold text inside answers gets the violet emphasis colour */
 .faq-answer strong {
     color: #d4c8f0;
     font-weight: 600;
 }
 
+/* Smaller styled note variant (currently unused in markup but reserved) */
 .faq-note {
     display: flex;
     align-items: flex-start;
@@ -281,11 +365,14 @@ details.faq-item[open] .faq-chevron {
     line-height: 1.6;
 }
 
+/* Override the global .highlight-box font-size when used inside an FAQ answer
+   (callouts inside FAQs should be smaller/less dominant than top-level ones) */
 .faq-answer .highlight-box{
     padding: 0.5rem;
     font-size: 0.80rem;
 }
 
+/* "Have a question not answered here?" CTA below the FAQ list */
 .faq-bottom {
     max-width: 780px;
     margin: 2.75rem auto 0;
@@ -298,6 +385,12 @@ details.faq-item[open] .faq-chevron {
     margin-bottom: 2rem;
 }
 
+
+/* =====================================================================
+   ALTERNATE OUTLINE BUTTON (violet variant) — defined but not used in
+   current HTML; kept for potential reuse on this page. The active
+   button in the FAQ CTA actually uses the global .btn-outline.
+   ===================================================================== */
 .btn-outline-violet {
     display: inline-block;
     font-family: 'Raleway', sans-serif;

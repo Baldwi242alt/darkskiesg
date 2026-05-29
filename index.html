@@ -1,24 +1,56 @@
 <!DOCTYPE html>
+<!-- =====================================================================
+     index.html — Dark Skies SG (HOMEPAGE)
+     ---------------------------------------------------------------------
+     Purpose : Landing page introducing the topic of light pollution in
+               Singapore. Contains the hero banner, key statistics, an
+               explanation section, impact cards, and case studies.
+     Author  : Baldwin Raymond (Singapore Polytechnic — DAAA1A03)
+     Project : Front-End Web Development CA1 Project
+     ===================================================================== -->
 <html lang="en">
 <head>
+    <!-- Character encoding: UTF-8 supports special characters/emojis -->
     <meta charset="UTF-8">
+
+    <!-- Responsive viewport: scales correctly on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO meta description: shown in search engine result snippets -->
     <meta name="description" content="Dark Skies SG - raising awareness about light pollution in Singapore.">
+
+    <!-- Preconnect hints: open early connections to Google Fonts servers
+         so the font files download faster when the browser needs them -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts: Cinzel (serif, used for headings/logo) and Raleway
+         (sans-serif, used for body text) — multiple weights loaded -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets: global.css applies to all pages; index.css is
+         page-specific. Order matters — index.css overrides global.css -->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/index.css">
+
+    <!-- Browser tab title -->
     <title>Dark Skies SG</title>
 </head>
- 
+
 <body>
- 
+
+    <!-- =================================================================
+         HEADER — Sticky top navigation bar (shared across all pages)
+         ================================================================= -->
     <header>
         <div>
+            <!-- Site logo / brand: clicking returns user to homepage -->
             <a href="index.html" class="logo">Dark Skies SG</a>
+
+            <!-- Primary navigation menu -->
             <nav>
                 <ul>
+                    <!-- "active" class highlights the current page in the nav -->
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="action.html">Action Plan</a></li>
                     <li><a href="about.html">About Me</a></li>
@@ -26,60 +58,94 @@
             </nav>
         </div>
     </header>
- 
-    <main>
- 
 
+    <main>
+
+        <!-- =============================================================
+             HERO BANNER — "Starry night" full-viewport intro section
+             Uses the shared .starry-night background (stars.gif overlay)
+             ============================================================= -->
         <section class="starry-night">
             <div>
+                <!-- Small pill label above the headline -->
                 <span class="banner-label">Light Pollution &amp; Dark Sky Conservation</span>
+
+                <!-- Main headline. Nested spans allow different font sizes
+                     on the word "Stars?" for visual emphasis -->
                 <h1>Can You Remember<br>The Last Time You<br><span>Saw The <span>Stars?</span></span></h1>
+
+                <!-- Hook paragraph with key statistics in <strong> for emphasis.
+                     &times; = × symbol; &mdash; = em dash -->
                 <p>
                     Singapore ranks among the <strong>most light-polluted nations on Earth</strong>.
                     Our skies glow <strong>100&times; brighter</strong> than natural darkness every single night!
                 </p>
+
+                <!-- Call-to-action buttons: anchor links to sections below -->
                 <div class="button-row">
                     <a href="#what-is" class="btn-primary">Discover the Issue</a>
-                    <a href="#impact"  class="btn-outline">See the Impact</a>
+                    <a href="#impact" class="btn-outline">See the Impact</a>
                 </div>
             </div>
         </section>
- 
 
+        <!-- =============================================================
+             STATS STRIP — Three headline statistics with sources
+             aria-label provides an accessible name for screen readers
+             ============================================================= -->
         <section class="stats-strip" aria-label="Key statistics">
             <div>
+                <!-- Stat 1: 83% of the world under light-polluted skies -->
                 <div>
                     <span>83%</span>
                     <span>of the world&rsquo;s population lives under light-polluted skies</span>
-                    <span>Source: New World Atlas of Artificial Night Sky Brightness, 2016</span>
+                    <!-- Source link jumps to footer references -->
+                    <span><a href="#footer">Source</a>: Falchi et al., 2016</span>
                 </div>
+
+                <!-- Stat 2: Singapore's sky 100× brighter than natural -->
                 <div>
                     <span>100&times;</span>
                     <span>brighter than natural darkness &mdash; Singapore&rsquo;s sky every night</span>
-                    <span>Source: Light Pollution Map, 2023 (lightpollutionmap.info)</span>
+                    <span><a href="#footer">Source</a>: Light Pollution Map, VIIRS 2024 Data (lightpollutionmap.info)</span>
                 </div>
+
+                <!-- Stat 3: Insect mortality from artificial light -->
                 <div>
                     <span>30%</span>
                     <span>of nocturnal insects die per night, attracted to artificial light</span>
-                    <span>Source: Ecological Light Pollution, Longcore &amp; Rich, 2004</span>
+                    <span><a href="#footer">Source</a>: Owens et al., Biological Conservation, 2020 &mdash; The Impact of Artificial Light at Night on Nocturnal Insects</span>
                 </div>
             </div>
         </section>
- 
+
+        <!-- =============================================================
+             "WHAT IS LIGHT POLLUTION?" — Two-column explainer section
+             Left column: text + four-type list + tag pills
+             Right column: image with caption
+             ============================================================= -->
         <section id="what-is">
             <div>
                 <div>
                     <span class="section-tag">The Invisible Crisis</span>
+
+                    <!-- Section heading; nested <span> styled differently in CSS -->
                     <h2>What Is Light <span>Pollution?</span></h2>
+
+                    <!-- Definition paragraph -->
                     <p>
                         Light pollution is the <strong>excessive, misdirected, or obstructed use of artificial light at night</strong>.
                         Unlike most pollution, it is invisible in daylight &mdash; yet it operates continuously, disrupting natural
                         dark cycles for every living organism on Earth.
                     </p>
+
+                    <!-- Local context paragraph (Singapore-specific) -->
                     <p>
                         Singapore's 24-hour city culture produces a permanent orange haze above our island.
                         Most Singaporeans under 30 have <em>never</em> seen the Milky Way from home.
                     </p>
+
+                    <!-- Sub-heading + bulleted list of the four light pollution types -->
                     <h3>The Four Types</h3>
                     <ul>
                         <li><strong>Skyglow</strong> &mdash; the bright halo over cities</li>
@@ -87,6 +153,8 @@
                         <li><strong>Light Trespass</strong> &mdash; unwanted light entering your bedroom</li>
                         <li><strong>Clutter</strong> &mdash; confusing groups of competing light sources</li>
                     </ul>
+
+                    <!-- Tag pills: visual summary of related impact areas -->
                     <div class="tags">
                         <span class="tag">Energy Waste</span>
                         <span class="tag">Biodiversity Loss</span>
@@ -95,33 +163,46 @@
                         <span class="tag">Climate Impact</span>
                     </div>
                 </div>
- 
+
+                <!-- Right column: figure with image + photo credit caption -->
                 <figure>
-                    <img src="images/index/orangeglow.png" alt="Singapore city skyline at night showing bright orange skyglow above the buildings" width="600" height="400">
+                    <img src="images/index/orangeglow.jpg" alt="Singapore city skyline at night showing bright orange skyglow above the buildings" width="600" height="400">
                     <figcaption>
                         Singapore's skyline at night &mdash; the orange glow never disappears.<br>
-                        <span>Photo: Vinchel Budihardjo / Getty Images</span>
+                        <span>Photo: Generated AI pic from Chatgpt based off Singapore's current orange glow situation</span>
                     </figcaption>
                 </figure>
             </div>
         </section>
 
+        <!-- =============================================================
+             IMPACT SECTION — Three "who does it hurt" cards
+             .section-dark applies a darker background for contrast
+             ============================================================= -->
         <section class="section-dark" id="impact">
+            <!-- Centred section header block -->
             <div class="section-head">
                 <span class="section-tag">Why It Matters</span>
                 <h2>Who Does Light Pollution <span>Hurt?</span></h2>
-                <p>The consequences go far beyond "not seeing stars." Light pollution actively
+                <p>The consequences go far beyond &ldquo;not seeing stars.&rdquo; Light pollution actively
                     harms wildlife, ecosystems, and human health &mdash; every single night.</p>
             </div>
+
+            <!-- Three-column grid of impact cards -->
             <div class="cards-grid">
+
+                <!-- Card 1: Migratory birds -->
                 <article class="card">
                     <img src="images/index/birds.png" alt="Migratory birds in flight at dusk">
                     <h3>Migratory Birds</h3>
                     <p>Singapore lies along the <strong>East Asian&ndash;Australasian Flyway</strong>, one of the world's major
                         migratory bird routes. Excessive lighting can <strong>disorient migrating birds</strong>, causing
-                        collisions with buildings and disrupting navigation during nighttime migration.</p>
+                        collisions with buildings and disrupting navigation during nighttime migration. Singapore&rsquo;s NSS Bird Group confirmed this threat in 2022, noting birds circling bright areas until exhausted.</p>
+                    <!-- Red severity badge at bottom of card -->
                     <span class="badge-red">Critical Impact</span>
                 </article>
+
+                <!-- Card 2: Urban biodiversity (nocturnal insects) -->
                 <article class="card">
                     <img src="images/index/nocturnal_insects.png" alt="A moth on a leaf in low light">
                     <h3>Urban Biodiversity</h3>
@@ -129,76 +210,105 @@
                         their natural habitats, disrupting feeding, breeding, and pollination cycles.</p>
                     <span class="badge-red">Critical Impact</span>
                 </article>
+
+                <!-- Card 3: Human health (melatonin / sleep / cancer) -->
                 <article class="card">
                     <img src="images/index/cant_sleep.png" alt="Person lying awake in bright artificial light">
                     <h3>Human Health</h3>
-                    <p>Artificial light suppresses <strong>melatonin production</strong>. The WHO (2007) classified
-                        night-shift work as a probable carcinogen, partly due to this effect.</p>
+                    <p>Artificial light suppresses <strong>melatonin production</strong>. A 2021 review in the <em><a href="#footer">British Journal of Cancer</a></em> (Jones, NIH/NCI) confirmed circadian disruption from artificial light at night is linked to increased cancer risk.</p>
                     <span class="badge-red">Critical Impact</span>
                 </article>
             </div>
         </section>
- 
+
+        <!-- =============================================================
+             CASE STUDIES — Three real-world story cards + CTA box
+             ============================================================= -->
         <section>
             <div class="section-head">
                 <span class="section-tag">Real-World Evidence</span>
                 <h2>Three Stories that <span>Changed Everything</span></h2>
                 <p>Around the world &mdash; and right here in our region &mdash; light pollution is destroying what took millions of years to evolve.</p>
             </div>
+
+            <!-- Three-column grid of case study cards -->
             <div class="case-grid">
+
+                <!-- Case 1: Sisters' Islands (Singapore) — coral reefs -->
                 <article class="case-card">
                     <img src="images/index/coral_reef.jpeg" alt="Coral reef underwater with vibrant marine life">
                     <div class="case-head">
-                        <a href="https://maps.app.goo.gl/bVnoKSMUkg45o6G5A" target="_blank">&#x1F4CD; Sisters&rsquo; Islands Marine Park, Singapore</a>
+                        <!-- Location link opens Google Maps in a new tab.
+                             rel="noopener" prevents the new page from accessing
+                             window.opener (security best practice) -->
+                        <a href="https://maps.app.goo.gl/bVnoKSMUkg45o6G5A" target="_blank" rel="noopener">&#x1F4CD; Sisters&rsquo; Islands Marine Park, Singapore</a>
                         <h3>Coral Reefs Losing the Moon</h3>
                     </div>
-                    
                     <p>The Selangor River was once home to one of Southeast Asia&rsquo;s most spectacular firefly displays.
                         As riverside resort lighting expanded from 2000&ndash;2010, firefly populations dropped by an
                         <strong>estimated 70%</strong>. The disrupted light cycles broke their mating signals.</p>
-                    <a href="https://www.nparks.gov.sg/visit/parks/park-detail/sisters-islands-marine-park" target="_blank">NParks Sisters&rsquo; Islands &rarr;</a>
+                    <!-- Read-more link at bottom of card -->
+                    <a class="case-card-links" href="https://www.nparks.gov.sg/visit/parks/park-detail/sisters-islands-marine-park" target="_blank" rel="noopener">NParks Sisters&rsquo; Islands &rarr;</a>
                 </article>
+
+                <!-- Case 2: Pulau Ubin — Singapore's last dark sky -->
                 <article class="case-card">
                     <img src="images/index/pulau_ubin.png" alt="A tropical forest path at night with moonlight through trees">
                     <div class="case-head">
-                        <a href="https://maps.app.goo.gl/Y41tz61uzPzzVBts8" target="_blank">&#x1F4CD; Pulau Ubin, Singapore</a>
+                        <a href="https://maps.app.goo.gl/Y41tz61uzPzzVBts8" target="_blank" rel="noopener">&#x1F4CD; Pulau Ubin, Singapore</a>
                         <h3>Our Last Relatively Dark Sky</h3>
                     </div>
                     <p>Pulau Ubin &mdash; just 10&thinsp;km from Changi &mdash; hosts rare nocturnal wildlife including
-                        the <em><a href="https://shorturl.at/KrTXt" target="_blank">Sunda pangolin</a></em> and bat species dependent on dark foraging corridors.
+                        the <em><a href="https://shorturl.at/KrTXt" target="_blank" rel="noopener">Sunda pangolin</a></em> and bat species dependent on dark foraging corridors.
                         The creeping amber glow is now measurable from the island&rsquo;s eastern shore.</p>
-                    <a href="https://pulau-ubin.nparks.gov.sg/" target="_blank">NParks Ubin Conservation &rarr;</a>
+                    <a class="case-card-links" href="https://pulau-ubin.nparks.gov.sg/" target="_blank" rel="noopener">NParks Ubin Conservation &rarr;</a>
                 </article>
+
+                <!-- Case 3: International Dark-Sky Association (global) -->
                 <article class="case-card">
                     <img src="images/index/IDA.jpg" alt="The Milky Way stretching across a perfectly dark sky">
                     <div class="case-head">
-                        <span class="location">&#x1F30D; Worldwide &mdash; 193 Certified Sites</span>
-                    <h3>The International Dark-Sky Association</h3>
+                        <span class="location">&#x1F30D; Worldwide &mdash; 200+ Certified Sites</span>
+                        <h3>The International Dark-Sky Association</h3>
                     </div>
-                    <p>The IDA&rsquo;s Dark Sky Places Programme has certified 193 reserves worldwide. Switching to
+                    <p>The IDA&rsquo;s Dark Sky Places Programme has certified over 200 reserves worldwide. Switching to
                         shielded, warm-spectrum LEDs <strong>reduced skyglow measurably within one year</strong>,
-                        cutting energy bills by 20&ndash;50%.</p>
-                    <a href="https://www.darksky.org" target="_blank">IDA Dark Sky Places &rarr;</a>
+                        cutting energy bills by 20&ndash;50%.
+
+                        <a href="#footer">Source</a>: DarkSky International &amp; NPS, 2023</p>
+                    <a class="case-card-links" href="https://www.darksky.org" target="_blank" rel="noopener">IDA Dark Sky Places &rarr;</a>
                 </article>
             </div>
+
+            <!-- Closing call-to-action box driving users to the action plan page -->
             <div class="highlight-box">
                 <p>Light pollution is not inevitable.
                     <a href="action.html">See how you can help &rarr;</a></p>
             </div>
         </section>
- 
+
     </main>
-    
-    <footer>
+
+    <!-- =================================================================
+         FOOTER — Three-column footer with contact, navigation, and
+         reference list. id="footer" is the anchor target for "Source"
+         links throughout the page.
+         ================================================================= -->
+    <footer id="footer">
         <div class="footer-grid">
+
+            <!-- Column 1: Brand + tagline + contact methods -->
             <div>
-                <a class="logo" id="footer-logo" href="index.html">Dark Skies SG</a>
+                <a class="logo" href="index.html">Dark Skies SG</a>
                 <p>Raising awareness about light pollution 1 bulb at a time&excl;</p>
                 <ul class="footer-socials">
+                    <!-- mailto: opens email client; tel: opens phone dialer -->
                     <li><a href="mailto:baldwinabner24.26@ichat.sp.edu.sg">✉ baldwinabner24.26@ichat.sp.edu.sg</a></li>
                     <li><a href="tel:+6588248276">✆ +65 88248276</a></li>
                 </ul>
             </div>
+
+            <!-- Column 2: Internal navigation links -->
             <div class="footer-col">
                 <h4 class="text-violet">Explore</h4>
                 <ul>
@@ -207,46 +317,34 @@
                     <li><a href="about.html">About Me</a></li>
                 </ul>
             </div>
- 
+
+            <!-- Column 3: External references / citations for the statistics
+                 used throughout this page. All open in new tabs. -->
             <div class="footer-col">
                 <h4 class="text-violet">Resources</h4>
                 <ul>
-                    <li>
-                        <a href="https://www.darksky.org" target="_blank">
-                            IDA Dark Sky Association
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.globeatnight.org" target="_blank">
-                            Globe at Night
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.nparks.gov.sg/visit/parks/park-detail/sisters-islands-marine-park" target="_blank">
-                            NParks Sisters' Islands
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://pulau-ubin.nparks.gov.sg/" target="_blank">
-                            NParks Pulau Ubin
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://lightpollutionmap.info" target="_blank">
-                            Light Pollution Map
-                        </a>
-                    </li>
+                    <li><a href="https://www.darksky.org" target="_blank" rel="noopener">IDA Dark Sky Association</a></li>
+                    <li><a href="https://www.globeatnight.org" target="_blank" rel="noopener">Globe at Night</a></li>
+                    <li><a href="https://www.lightpollutionmap.info" target="_blank" rel="noopener">Light Pollution Map</a></li>
+                    <li><a href="https://www.science.org/doi/10.1126/sciadv.1600377" target="_blank" rel="noopener">83% Population &mdash; Falchi et al., Science Advances, 2016</a></li>
+                    <li><a href="https://www.lightpollutionmap.info" target="_blank" rel="noopener">100&times; Brightness &mdash; Light Pollution Map, VIIRS 2024</a></li>
+                    <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0006320719307797" target="_blank" rel="noopener">30% Insects &mdash; Owens et al., Biological Conservation, 2020</a></li>
+                    <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8076311/" target="_blank" rel="noopener">Melatonin &amp; Cancer &mdash; Jones, British Journal of Cancer, 2021</a></li>
+                    <li><a href="https://singaporebirdgroup.wordpress.com/2022/10/12/nss-bird-group-went-live-on-cna93-8-to-discuss-world-bird-migratory-day/" target="_blank" rel="noopener">Migratory Birds &mdash; NSS Bird Group &amp; CNA93.8, 2022</a></li>
+                    <li><a href="https://www.nps.gov/ciro/learn/news/darksky.htm" target="_blank" rel="noopener">200+ IDA Sites &mdash; DarkSky International &amp; NPS, 2023</a></li>
                 </ul>
             </div>
-            
         </div>
+
+        <!-- Horizontal divider before the copyright line -->
         <hr>
+
+        <!-- Copyright + project credit line -->
         <p class="footer-bottom">
             &copy; 2026 Baldwin Raymond &bull; Singapore Polytechnic &bull; All images credited to photographers below each image.
             <span class="footer-credit">Front-End Web Development &mdash; CA1 Project</span>
         </p>
     </footer>
-    
- 
+
 </body>
 </html>

@@ -1,33 +1,61 @@
+/* =====================================================================
+   index.css — Dark Skies SG (HOMEPAGE-SPECIFIC STYLES)
+   ---------------------------------------------------------------------
+   Purpose : Styles unique to index.html. Loaded AFTER global.css so it
+             can override or extend the shared styles where needed.
+   Sections covered:
+     1. Stats strip (the three big-number row)
+     2. "What is light pollution?" two-column explainer
+     3. Impact cards grid (.cards-grid)
+     4. Case-study cards grid (.case-grid)
+   ===================================================================== */
+
+
+/* =====================================================================
+   1. STATS STRIP — three big-number tiles separated by vertical lines
+   ===================================================================== */
 .stats-strip {
-    background-color: #0a0a22;
-    border-top: 1px solid rgba(162,155,254,.25);
-    border-bottom: 1px solid rgba(162,155,254,.25);
+    background-color: #0a0a22;     /* Slightly darker than body for contrast */
+    border-top: 1px solid rgba(162, 155, 254, .25);
+    border-bottom: 1px solid rgba(162, 155, 254, .25);
     padding: 2rem 0;
 }
 
+/* Inner container — caps width and centres the three stats horizontally */
 .stats-strip > div {
-    max-width: 80rem; /* 1280px */
+    max-width: 80rem;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: stretch;          /* Equal heights so dividers align */
     gap: 2rem;
 }
 
+/* Each individual stat tile — flex column centred horizontally */
 .stats-strip > div > div {
+    flex: 1;                       /* Each tile takes equal share of width */
+    position: relative;            /* Anchor for the divider ::after below */
     text-align: center;
-    flex: 1;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
 }
+
+/* Vertical divider line between stat tiles.
+   Applied to every tile EXCEPT the last one so there's no trailing line. */
 .stats-strip > div > div:not(:last-child)::after {
     content: "";
     position: absolute;
-    right: 0; top: 10%;
-    height: 80%; width: 1px;
-    background-color: rgba(162,155,254,.25);
+    right: 0;
+    top: 10%;                      /* Inset 10% top & bottom for shorter line */
+    height: 80%;
+    width: 1px;
+    background-color: rgba(162, 155, 254, .25);
 }
 
+/* The big number ("83%", "100×", "30%") — largest text in the tile */
 .stats-strip span:first-child {
     display: block;
     font-family: 'Cinzel', 'Georgia', serif;
@@ -35,44 +63,65 @@
     font-weight: 700;
     color: #a29bfe;
     line-height: 1;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
 }
+
+/* The descriptor line below the number ("of the world's population...") */
 .stats-strip span:nth-child(2) {
     font-size: 0.82rem;
     letter-spacing: 0.04em;
-    line-height: 1.5;
-}
-.stats-strip span:last-child {
-    display: block;
-    font-size: 0.68rem;
-    color: #606090;
-    margin-top: 0.2rem;
-    letter-spacing: 0.03em;
+    line-height: 1.7;
+    min-height: 60px;              /* Force consistent height across tiles */
+    display: flex;
+    align-items: center;           /* Vertically centre if it wraps short */
 }
 
+/* The small source attribution at the bottom of each tile */
+.stats-strip span:last-child {
+    font-size: 0.75rem;
+    color: #606090;                /* Muted — sources are secondary info */
+    margin-top: 1rem;
+    letter-spacing: 0.03em;
+    line-height: 1.6;
+}
+
+/* Make the "Source" link slightly bolder than surrounding text */
+.stats-strip a {
+    font-weight: 600;
+}
+
+
+/* =====================================================================
+   2. "WHAT IS LIGHT POLLUTION?" — Two-column explainer section
+   ===================================================================== */
 #what-is { padding: 5rem 2rem; } /* 80px 2rem */
 
+/* Two-column grid: text on the left, figure on the right */
 #what-is > div {
-    max-width: 71.875rem; /* 1150px */
+    max-width: 71.875rem;          /* 1150px — keeps line lengths readable */
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    align-items: start;
+    align-items: start;            /* Don't stretch — both columns start at top */
 }
 
+/* Left column inner padding */
 #what-is > div > div { padding-left: 2rem; }
 
 #what-is p { margin-bottom: 1rem; }
 
+/* Custom-styled unordered list (no bullets — uses ✦ instead, below) */
 #what-is ul {
     list-style: none;
     margin-top: 0.5rem;
 }
 #what-is ul li {
     margin-top: 1rem;
-    white-space: nowrap;
+    white-space: nowrap;           /* Each "type" stays on one line */
 }
+
+/* Decorative violet ✦ bullet before each list item */
 #what-is ul li::before {
     content: "✦ ";
     margin-right: 0.5rem;
@@ -80,59 +129,95 @@
     font-size: 0.7rem;
 }
 
+/* Right-column figure: image fills its container, slight rounded corners */
 #what-is figure img {
     width: 100%;
     height: auto;
-    border-radius: 0.5rem; /* 8px */
+    border-radius: 0.5rem;         /* 8px */
 }
 
+/* Figure caption typography */
 figcaption { font-size: 1.05rem; }
 figcaption span { font-size: 0.75rem; }
 
+
+/* =====================================================================
+   3. IMPACT CARDS — three-column grid of "Who does it hurt?" cards
+   ===================================================================== */
 #impact .cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
     gap: 2.5rem;
-    max-width: 71.875rem; /* 1150px */
+    max-width: 71.875rem;          /* 1150px */
     margin: 0 auto;
 }
 
+/* Smooth transitions for the lift + glow effect below */
 .card { transition: transform .5s ease, border-color .5s ease, box-shadow .5s ease; }
 
+/* Hover: card lifts up + border lights violet + soft violet glow */
 .card:hover {
-    transform: translateY(-1rem);
+    transform: translateY(-1rem);  /* Lift effect */
     border-color: #a29bfe;
-    box-shadow: 0 0 1.5rem rgba(162,155,254,.25); /* 24px */
+    box-shadow: 0 0 1.5rem rgba(162,155,254,.25); /* 24px halo */
 }
 
 .card h3 { margin-top: 1rem; }
 
+/* "Critical Impact" red severity badge at the bottom of each card */
 .badge-red {
     display: flex;
-    width: fit-content;
+    width: fit-content;            /* Only as wide as its text */
     padding: 0.25rem 1rem;
-    margin-top: auto;
+    margin-top: auto;              /* Push to the bottom of the flex card */
     border: 1px solid rgba(255,118,117,.3);
-    border-radius: 6.25rem; /* 100px */
+    border-radius: 6.25rem;        /* 100px — pill */
     background-color: rgba(255,118,117,.15);
-    color: #ff7675;
+    color: #ff7675;                /* Soft coral red */
     font-size: 0.78rem;
 }
 
+
+/* =====================================================================
+   4. CASE-STUDY CARDS — three-column grid of "Three Stories" cards
+   ===================================================================== */
 .case-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
-    max-width: 71.875rem; /* 1150px */
+    max-width: 71.875rem;          /* 1150px */
     margin: 0 auto;
     margin-bottom: 3rem;
 }
 
-.case-card { transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease; }
-.case-head { margin-top: 1rem; }
-.location { color: #74b9ff; }
+/* Smooth transitions for the case-card hover effect */
+.case-card { 
+    transition: border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease; 
+}
+
+/* Spacing between image and the title/location block */
+.case-head { 
+    margin-top: 1rem; 
+}
+
+/* "Worldwide" location label in the third case-study card */
+.location { 
+    color: #74b9ff;                /* Sky-blue accent */
+}
+
+/* Case card hover: subtle scale-up + blue glow (different colour from .card!) */
 .case-card:hover {
-    transform: scale(105%);
+    transform: scale(105%);        /* Slight zoom instead of lift */
     border-color: #74b9ff;
-    box-shadow: 0 0 1.25rem rgba(116,185,255,.2); /* 20px */
+    box-shadow: 0 0 1.25rem rgba(116,185,255,.2); /* 20px blue halo */
+}
+
+#card-source{
+    margin-top: 0.5rem;
+}
+
+/* "Read more →" link at the bottom of each case card.
+   margin-top: auto pushes it to the bottom of the flex column. */
+.case-card-links{
+    margin-top: auto;
 }

@@ -1,18 +1,34 @@
 <!DOCTYPE html>
+<!-- =====================================================================
+     about.html — Dark Skies SG (ABOUT ME PAGE)
+     ---------------------------------------------------------------------
+     Purpose : Personal page introducing the author. Includes profile card,
+               "passion + experiences" two-column section, vision section,
+               and an FAQ built with native HTML <details>/<summary>.
+     ===================================================================== -->
 <html lang="en">
 <head>
+    <!-- Standard meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dark Skies SG - raising awareness about light pollution in Singapore.">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets: global + page-specific -->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/about.css">
+
     <title>Dark Skies SG</title>
 </head>
 
 <body>
+    <!-- =================================================================
+         HEADER — "About Me" marked .active
+         ================================================================= -->
     <header>
         <div>
             <a href="index.html" class="logo">Dark Skies SG</a>
@@ -25,143 +41,210 @@
             </nav>
         </div>
     </header>
+
     <main>
+        <!-- =============================================================
+             HERO BANNER — short intro about the author
+             ============================================================= -->
         <section class="starry-night">
-                <div>
-                    <span class="banner-label">About me</span>
-                    <h1>The person behind<br><span>dark skies sg</span></h1>
-                    <p>
-                        A Year 1 Applied Ai and Analytics student who has never seen star from home 
-                        &mdash; and is determined to change that for the next generation.
-                    </p>
-                    <div class="button-row">
-                        <a href="#passion" class="btn-primary">My Passion</a>
-                        <a href="#vision"  class="btn-outline">My Vision</a>
-                    </div>
+            <div>
+                <span class="banner-label">About Me</span>
+                <h1>The person behind<br><span>Dark Skies SG</span></h1>
+                <p>
+                    A Year 1 Applied AI and Analytics student who has never seen stars from home
+                    &mdash; and is determined to change that for the next generation.
+                </p>
+                <!-- Page navigation buttons -->
+                <div class="button-row">
+                    <a href="#passion" class="btn-primary">My Passion</a>
+                    <a href="#vision" class="btn-outline">My Vision</a>
                 </div>
+            </div>
         </section>
+
+        <!-- =============================================================
+             PROFILE CARD — Photo on the left, biographical text + socials
+             on the right (two-column grid)
+             ============================================================= -->
         <section class="profile">
             <div>
-                <div >
-                    <img class="pfp" src="images/about/druski.png" alt="Picture of Me(Baldwin)">
+                <!-- Left column: profile picture -->
+                <div>
+                    <img class="pfp" src="images/about/pfp.jpeg" alt="Picture of Baldwin">
                 </div>
+
+                <!-- Right column: name, course tag, bio, socials -->
                 <div class="profile-text">
-                    <h1>Baldwin</h1>
+                    <h2>Baldwin</h2>
                     <span class="section-tag">Year 1 &mdash; Applied AI &amp; Analytics &bull; Singapore Polytechnic</span>
-                    <p class="profile-description">I am a first-year student studying <strong>Applied Ai and Analytics</strong> at Singapore Polytechnic&comma; with a particular interest in how technology can be applied to environmental challenges. 
-                        When I am not studying or coding&comma; I spend time doing astrophotography &mdash; or attempting to&comma; through Singapore&apos;s relentless ambient glow.
+
+                    <!-- Three short biographical paragraphs -->
+                    <p class="profile-description">I am a first-year student studying <strong>Applied AI and Analytics</strong> at Singapore Polytechnic, with a particular interest in how technology can be applied to environmental challenges.
+                        When I am not studying or coding, I spend time doing astrophotography &mdash; or attempting to, through Singapore&apos;s relentless ambient glow.
                     </p>
-                    <p class="profile-description"> I grew up in Bishan&comma; looking out at a sky that is always amber, always lit. For years I assumed that was simply what the night sky looked like. 
+                    <p class="profile-description">I grew up in Bishan, looking out at a sky that is always amber, always lit. For years I assumed that was simply what the night sky looked like.
                         A family trip to Cameron Highlands in 2025 showed me otherwise &mdash; and permanently changed how I think about sustainability.
                     </p>
                     <p class="profile-description">
-                        This website is my attempt to share what I learned&comma; and to show that light pollution &mdash; an issue almost nobody in Singapore is talking about — 
+                        This website is my attempt to share what I learned, and to show that light pollution &mdash; an issue almost nobody in Singapore is talking about &mdash;
                         is a serious, solvable environmental crisis hiding in plain sight above our heads.
                     </p>
-                    <div class="socials">
+
+                    <!-- <address> is the semantically correct element for
+                         contact info. Each link is a different contact method. -->
+                    <address class="socials">
                         <div>
-                            
                             <a class="email" href="mailto:baldwinabner24.26@ichat.sp.edu.sg">&#x2709;&#xFE0F; baldwinabner24.26@ichat.sp.edu.sg</a>
                         </div>
                         <div>
-                            <a class="tel" href="tel:+6588248276">&#x1F4DE;+65 88248276</a>
+                            <a class="tel" href="tel:+6588248276">&#x1F4DE; +65 88248276</a>
                         </div>
                         <div>
-                            <a href="https://globeatnight.org/" target="_blank">&#x1F52D;Globe at Night Contributer</a>
+                            <a href="https://www.linkedin.com/in/baldwin-abner-6152092ba" target="_blank" rel="noopener">&#x1F4BC; LinkedIn</a>
                         </div>
-                    </div>
+                    </address>
                 </div>
             </div>
-            
         </section>
+
+        <!-- =============================================================
+             "MY PASSION + MY EXPERIENCES" — Two-column section
+             Left  (#mypassion): why sustainability matters to the author
+             Right (#exp): vertical timeline of personal experiences
+             ============================================================= -->
         <section id="passion">
             <div>
+
+                <!-- Left column: passion narrative -->
                 <div id="mypassion">
-                    <span class="section-tag">My passion</span>
-                    <h2>Why <span class="highlight">sustainability</span> matter to me</h2>
-                    <p>I believe environmental problems do not always announce themselves with floods or wildfires. 
+                    <span class="section-tag">My Passion</span>
+                    <h2>Why <span class="highlight">sustainability</span> matters to me</h2>
+                    <p>I believe environmental problems do not always announce themselves with floods or wildfires.
                         Sometimes they are as quiet and constant as a light left on all night.</p>
-                    <p>Light pollution is a sustainability issue that costs energy, destroys ecosystems, harms human health, and quietly robs us of something deeply meaningful 
+                    <p>Light pollution is a sustainability issue that costs energy, destroys ecosystems, harms human health, and quietly robs us of something deeply meaningful
                         &mdash; the ability to stand under an open sky and feel connected to the universe.</p>
-                    <p>I am also drawn to this topic because it sits at the intersection of <em>technology</em> and <em>nature</em> &colon; 
-                        the very tools that created the problem (LED technology, urban infrastructure) are the same tools that can solve it. 
+                    <p>I am also drawn to this topic because it sits at the intersection of <em>technology</em> and <em>nature</em>:
+                        the very tools that created the problem (LED technology, urban infrastructure) are the same tools that can solve it.
                         Singapore, as a Smart Nation, has every capability needed to lead Southeast Asia on dark sky policy. What we need is the will to do it.</p>
+
+                    <!-- Key insight pulled into a styled highlight box -->
                     <div class="highlight-box">
-                        <strong class="text-violet">My personal interest in computing</strong> makes this issue feel urgent to me. Smart lighting systems &mdash; adaptive, sensor-driven LEDs that dim when no one is present &mdash; already exist. 
+                        <strong class="text-violet">My personal interest in computing</strong> makes this issue feel urgent to me. Smart lighting systems &mdash; adaptive, sensor-driven LEDs that dim when no one is present &mdash; already exist.
                         Deploying them island-wide is a technical problem Singapore is perfectly positioned to solve.
                     </div>
                 </div>
+
+                <!-- Right column: experiences timeline (ordered list,
+                     styled into a vertical timeline via CSS pseudo-elements) -->
                 <div id="exp">
-                    <span class="section-tag">My experiences</span>
+                    <span class="section-tag">My Experiences</span>
                     <h2>What I have <span class="highlight">done</span></h2>
-                    <div class="exp-timeline">
-                        <div class="exp-item">
+
+                    <!-- Ordered list rendered as a vertical timeline.
+                         Each <li> has a coloured dot drawn via .exp-year::before -->
+                    <ol class="exp-timeline">
+
+                        <!-- Experience 1: 2024 — Europe trip -->
+                        <li class="exp-item">
+                            <p class="exp-year">2024 &mdash; Europe Trip</p>
+                            <h3>Stars Across Europe</h3>
+                            <p>During a family trip across Italy, Switzerland and France, I noticed
+                            how much darker the skies were compared to Singapore. Looking up at night
+                            in the countryside revealed thousands of stars &mdash; something I had never
+                            experienced growing up in Singapore's permanent amber glow.</p>
+                        </li>
+
+                        <!-- Experience 2: 2025 — Cameron Highlands (the pivotal moment) -->
+                        <li class="exp-item">
                             <p class="exp-year">2025 &mdash; Cameron Highlands Family Trip</p>
                             <h3>First Dark Sky Experience</h3>
                             <p>On a family trip to Cameron Highlands, Malaysia, I stepped outside
                             at midnight and saw the night sky with minimal light pollution for the
                             first time in my life. Returning home to Singapore's permanent amber
                             glow made this issue feel personal and urgent.</p>
-                        </div>
-                        <div class="exp-item">
-                            <p class="exp-year">2025 &mdash; Research Discovery</p>
+                        </li>
+
+                        <!-- Experience 3: 2026 — research discovery -->
+                        <li class="exp-item">
+                            <p class="exp-year">2026 &mdash; Research Discovery</p>
                             <h3>Singapore's Light Pollution Ranking</h3>
-                            <p>I discovered that Singapore was ranked the most light-polluted
-                            nation in the 2016 New World Atlas and remains among the world's
-                            worst nearly a decade later. Despite being one of the most affected
+                            <p>I discovered that Singapore was confirmed among the world&rsquo;s most light-polluted
+                            nations by the 2023 Kyba et al. citizen science study in Science, which tracked global sky brightness from 2011&ndash;2022. Despite being one of the most affected
                             countries, the issue is still widely overlooked here.</p>
-                        </div>
-                        <div class="exp-item">
-                            <p class="exp-year">2024 &mdash; Europe Trip</p>
-                            <h3>Stars Across Europe</h3>
-                            <p>During a family trip across Italy, Switzerland and France, I noticed
-                            how much darker the skies were compared to Singapore. Looking up at night
-                            in the countryside revealed thousands of stars — something I had never
-                            experienced growing up in Singapore's permanent amber glow.</p>
-                        </div>
-                    </div>
+                        </li>
+                        
+                    </ol>
                 </div>
             </div>
         </section>
+
+        <!-- =============================================================
+             MY VISION — Pull-quote followed by 3 vision-pillar cards
+             ============================================================= -->
         <section id="vision">
             <div class="section-head">
-                <span class="section-tag">My vision</span>
-                <h2>A singapore where we can see the <span class="text-violet">stars</span></h2>
+                <span class="section-tag">My Vision</span>
+                <h2>A Singapore where we can see the <span class="text-violet">stars</span></h2>
             </div>
-            <div class="vision-quote">
+
+            <!-- Highlighted personal quote in a styled blockquote -->
+            <blockquote class="vision-quote">
                 <p>&ldquo;I dream of a Singapore where every child can walk to their void deck at midnight and see at least a handful of stars without leaving the island. That is not a fantasy &mdash; it is a policy choice.&rdquo;</p>
-            </div>
+            </blockquote>
+
+            <!-- Three vision pillars: smart lighting / dark sky corridors / education -->
             <div id="vision-grid">
+
+                <!-- Vision 1: Smart street lighting -->
                 <div>
+                    <!-- aria-hidden hides decorative emoji from screen readers -->
                     <p class="vision-logo" aria-hidden="true">&#x1F4A1;</p>
-                    <h3>Smarter street lightning</h3>
-                    <p>Replace Singapore's street and corridor lightning island-wide with adaptive, shielded,
-                        downward-facing warm-white LEDs that dim automatically between midnight and 5am. 
-                        <br/><br/>
-                        Purpose: This could reduce skyglow by 30-50% while cutting the national lightning electricity bill.
+                    <h3>Smarter Street Lighting</h3>
+                    <p>Replace Singapore's street and corridor lighting island-wide with adaptive, shielded,
+                        downward-facing warm-white LEDs that dim automatically between midnight and 5am.
+                    </p>
+                    <p class="purpose">
+                        Purpose: This could reduce skyglow by 30&ndash;50% while cutting the national lighting electricity bill.
                     </p>
                 </div>
+
+                <!-- Vision 2: Dark sky corridors / sanctuaries -->
                 <div>
                     <p class="vision-logo" aria-hidden="true">&#x1F333;</p>
-                    <h3>Dark Sky corridors</h3>
-                    <p>Designate protected unlit wildlife corridors linking our nature reserves &mdash; 
-                        Central Catchment, Bukit Timah, Sungei Buloh.  Extend the principle to Pulau Ubin as a certified Dark Sky Sanctuary.
-                        <br/><br/>
-                        Purpose: To allow nocturnal animals like the Sunda pangolin and owlets have safe foraging zones. 
-                       </p>
+                    <h3>Dark Sky Corridors</h3>
+                    <p>Designate protected unlit wildlife corridors linking our nature reserves &mdash;
+                        Central Catchment, Bukit Timah, Sungei Buloh. Extend the principle to Pulau Ubin as a certified Dark Sky Sanctuary.
+                    </p>
+                    <p class="purpose">
+                        Purpose: To allow nocturnal animals like the Sunda pangolin and owlets safe foraging zones.
+                    </p>
                 </div>
+
+                <!-- Vision 3: Education -->
                 <div>
                     <p class="vision-logo" aria-hidden="true">&#x1F3EB;</p>
-                    <h3>Dark sky education</h3>
-                    <p>Include dark sky literacy as part of Singapore&apos;s national environmental curriculum 
-                        <br/><br/><br/><br/>
-                        Purpose: This allows every student understands what light pollution is, why it matters, and what a simple bulb swap can achieve. 
-                        This website is my small contribution to that goal.</p>
+                    <h3>Dark Sky Education</h3>
+                    <p>Schools could integrate light-pollution awareness into science and geography lessons, partnering with programmes like Globe at Night to let students measure sky brightness in their own neighbourhoods.
+                    </p>
+                    <p class="purpose">
+                        Purpose: This allows every student to understand what light pollution is, why it matters, and what a simple bulb swap can achieve.
+                        This website is my small contribution to that goal.
+                    </p>
                 </div>
             </div>
+
+            <!-- Closing CTA box linking back to the action plan -->
             <span class="highlight-box">Start Small, Protect The Night Sky. Visit my <a href="action.html">Action Plan</a> page to find out what you can do today!
             </span>
         </section>
+
+        <!-- =============================================================
+             FAQ SECTION — Native HTML accordion using <details>/<summary>
+             ---------------------------------------------------------------
+             No JavaScript needed: browsers handle the open/close behaviour
+             automatically. The CSS rotates the chevron and changes colours
+             when the [open] attribute is present.
+             ============================================================= -->
         <section id="faq">
             <div class="section-head">
                 <span class="section-tag">Your Questions, Answered</span>
@@ -171,24 +254,30 @@
 
             <div class="faq-list">
 
+                <!-- FAQ item 1: Reversibility -->
                 <details class="faq-item">
                     <summary>
+                        <!-- Wrapper for the icon + question text on the left -->
                         <span class="faq-q-text">
                             <span class="faq-icon">?</span>
                             Is light pollution reversible, or is it permanent?
                         </span>
+                        <!-- Chevron arrow on the right (rotates when open via CSS) -->
                         <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 8l5 5 5-5"/>
                         </svg>
                     </summary>
+                    <!-- Hidden answer body, revealed when <details> is open -->
                     <div class="faq-answer">
                         <p>Unlike most environmental damage, light pollution is <strong>almost entirely reversible the moment you switch a light off</strong>. There is no residue to clean up, no soil to remediate. Cities that have adopted shielded, downward-facing warm LEDs have reported measurably darker skies within weeks. The challenge is political and cultural, not scientific.</p>
                     </div>
                 </details>
 
+                <!-- FAQ item 2: Cloud cover effect -->
                 <details class="faq-item">
                     <summary>
                         <span class="faq-q-text">
+                            <!-- &#x2601; = ☁ cloud emoji -->
                             <span class="faq-icon">&#x2601;</span>
                             Singapore is cloudy most nights. Does that make light pollution worse?
                         </span>
@@ -198,13 +287,16 @@
                     </summary>
                     <div class="faq-answer">
                         <p>Yes, significantly. Cloud cover acts like a giant mirror, <strong>reflecting artificial light back down</strong> and amplifying skyglow. On an overcast night in Singapore, the sky can appear even brighter than on a clear night &mdash; the clouds trap and scatter the light upward from buildings and streets below. This is why our nights never truly go dark, even in a thunderstorm.</p>
+                        <!-- Inline highlight box with extra "good news" insight -->
                         <div class="highlight-box">&#x2139;&#xFE0F; This also means reducing light output has an outsized positive effect here &mdash; less light in means far less reflected back.</div>
                     </div>
                 </details>
 
+                <!-- FAQ item 3: Warm-white brightness misconception -->
                 <details class="faq-item">
                     <summary>
                         <span class="faq-q-text">
+                            <!-- &#x1F4A1; = 💡 light bulb emoji -->
                             <span class="faq-icon">&#x1F4A1;</span>
                             Aren&apos;t warm-white LEDs dimmer? Will my home feel gloomy?
                         </span>
@@ -217,9 +309,11 @@
                     </div>
                 </details>
 
+                <!-- FAQ item 4: Government policy -->
                 <details class="faq-item">
                     <summary>
                         <span class="faq-q-text">
+                            <!-- &#x1F3DB; = 🏛 classical building emoji (government) -->
                             <span class="faq-icon">&#x1F3DB;</span>
                             Does the Singapore government have any dark sky policies?
                         </span>
@@ -233,9 +327,11 @@
                     </div>
                 </details>
 
+                <!-- FAQ item 5: Citizen science apps -->
                 <details class="faq-item">
                     <summary>
                         <span class="faq-q-text">
+                            <!-- &#x1F4F1; = 📱 mobile phone emoji -->
                             <span class="faq-icon">&#x1F4F1;</span>
                             What apps can I use to measure light pollution myself?
                         </span>
@@ -244,13 +340,15 @@
                         </svg>
                     </summary>
                     <div class="faq-answer">
-                        <p><strong>Loss of the Night</strong> &lpar;Android &amp; iOS&rpar; turns your eyes into a calibrated sensor &mdash; it guides you to look at specific stars and records how many you can detect, producing a sky brightness reading. <strong>Globe at Night</strong> has a companion app for submitting star counts. For a map view, <a href="https://lightpollutionmap.info" target="_blank">lightpollutionmap.info</a> overlays satellite-measured sky brightness globally and lets you zoom into any Singapore neighbourhood.</p>
+                        <p><strong>Loss of the Night</strong> (Android &amp; iOS) turns your eyes into a calibrated sensor &mdash; it guides you to look at specific stars and records how many you can detect, producing a sky brightness reading. <strong>Globe at Night</strong> has a companion app for submitting star counts. For a map view, <a href="https://lightpollutionmap.info" target="_blank" rel="noopener">lightpollutionmap.info</a> overlays satellite-measured sky brightness globally and lets you zoom into any Singapore neighbourhood.</p>
                     </div>
                 </details>
 
+                <!-- FAQ item 6: Contacting Town Council -->
                 <details class="faq-item">
                     <summary>
                         <span class="faq-q-text">
+                            <!-- &#x1F4E7; = 📧 e-mail emoji -->
                             <span class="faq-icon">&#x1F4E7;</span>
                             How do I contact my HDB Town Council about outdoor lighting?
                         </span>
@@ -259,13 +357,15 @@
                         </svg>
                     </summary>
                     <div class="faq-answer">
-                        <p>Every HDB estate has a Town Council with a public feedback portal. Visit <strong>mynicehome.gov.sg</strong> or your Town Council&apos;s own website and submit a request under the &ldquo;estate maintenance&rdquo; or &ldquo;lighting&rdquo; category. Requests backed by <strong>multiple residents signing the same letter</strong> carry significantly more weight. Be specific: cite the fixture location, suggest shielded replacements, and reference energy savings as a benefit to the TC&apos;s budget.</p>
+                        <p>Every HDB estate has a Town Council with a public feedback portal. Visit <a href="https://mynicehome.gov.sg" target="_blank">here</a> or your Town Council&apos;s own website and submit a request under the &ldquo;estate maintenance&rdquo; or &ldquo;lighting&rdquo; category. Requests backed by <strong>multiple residents signing the same letter</strong> carry significantly more weight. Be specific: cite the fixture location, suggest shielded replacements, and reference energy savings as a benefit to the TC&apos;s budget.</p>
                     </div>
                 </details>
 
+                <!-- FAQ item 7: Comparison with neighbouring countries -->
                 <details class="faq-item">
                     <summary>
                         <span class="faq-q-text">
+                            <!-- &#x1F30F; = 🌏 globe emoji -->
                             <span class="faq-icon">&#x1F30F;</span>
                             Do other cities near Singapore handle this better?
                         </span>
@@ -274,28 +374,37 @@
                         </svg>
                     </summary>
                     <div class="faq-answer">
-                        <p><strong>South Korea</strong> passed a Light Pollution Prevention Act in 2012, establishing national measurement standards and restricting upward-facing commercial signage after midnight. <strong>Taiwan</strong> has designated dark sky parks and restricts street lighting colour temperature near nature reserves. Even <strong>Hong Kong</strong>, similarly dense, has a voluntary Charter on External Lighting that has reduced some commercial glare. Singapore is among the most capable cities in the region to lead on this &mdash; it simply has not prioritised it yet.</p>
+                        <p><strong>South Korea</strong> passed a Light Pollution Prevention Act in 2012, establishing national measurement standards and restricting upward-facing commercial signage after midnight. <strong>Taiwan</strong> has designated dark sky parks and restricts street lighting colour temperature near nature reserves. <strong>Hong Kong</strong>, similarly dense, has a voluntary Charter on External Lighting that has reduced some commercial glare. Singapore is among the most capable cities in the region to lead on this &mdash; it simply has not prioritised it yet.</p>
                     </div>
                 </details>
 
             </div>
 
+            <!-- FAQ closing block: "still have questions?" CTA -->
             <div class="faq-bottom">
                 <p>Have a question not answered here? Reach out directly.</p>
                 <a href="mailto:baldwinabner24.26@ichat.sp.edu.sg" class="btn-outline">&#x2709; Get in touch</a>
             </div>
         </section>
     </main>
+
+    <!-- =================================================================
+         FOOTER — Three columns: brand + contact / nav / references
+         ================================================================= -->
     <footer>
         <div class="footer-grid">
+
+            <!-- Column 1: Brand + contact details -->
             <div>
-                <a class="logo" id="footer-logo" href="index.html">Dark Skies SG</a>
+                <a class="logo" href="index.html">Dark Skies SG</a>
                 <p>Raising awareness about light pollution 1 bulb at a time&excl;</p>
                 <ul class="footer-socials">
                     <li><a href="mailto:baldwinabner24.26@ichat.sp.edu.sg">✉ baldwinabner24.26@ichat.sp.edu.sg</a></li>
                     <li><a href="tel:+6588248276">✆ +65 88248276</a></li>
                 </ul>
             </div>
+
+            <!-- Column 2: Internal navigation -->
             <div class="footer-col">
                 <h4 class="text-violet">Explore</h4>
                 <ul>
@@ -304,40 +413,22 @@
                     <li><a href="about.html">About Me</a></li>
                 </ul>
             </div>
- 
+
+            <!-- Column 3: External references / citations -->
             <div class="footer-col">
                 <h4 class="text-violet">Resources</h4>
                 <ul>
-                    <li>
-                        <a href="https://www.darksky.org" target="_blank">
-                            IDA Dark Sky Association
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.globeatnight.org" target="_blank">
-                            Globe at Night
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.nparks.gov.sg/visit/parks/park-detail/sisters-islands-marine-park" target="_blank">
-                            NParks Sisters' Islands
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://pulau-ubin.nparks.gov.sg/" target="_blank">
-                            NParks Pulau Ubin
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://lightpollutionmap.info" target="_blank">
-                            Light Pollution Map
-                        </a>
-                    </li>
+                    <li><a href="https://www.darksky.org" target="_blank" rel="noopener">IDA Dark Sky Association</a></li>
+                    <li><a href="https://www.globeatnight.org" target="_blank" rel="noopener">Globe at Night</a></li>
+                    <li><a href="https://www.nparks.gov.sg/visit/parks/park-detail/sisters-islands-marine-park" target="_blank" rel="noopener">NParks Sisters&rsquo; Islands</a></li>
+                    <li><a href="https://pulau-ubin.nparks.gov.sg/" target="_blank" rel="noopener">NParks Pulau Ubin</a></li>
+                    <li><a href="https://www.science.org/doi/10.1126/science.abq7781" target="_blank" rel="noopener">Singapore Sky Brightness &mdash; Kyba et al., Science, 2023</a></li>
                 </ul>
             </div>
-            
         </div>
+
         <hr>
+
         <p class="footer-bottom">
             &copy; 2026 Baldwin Raymond &bull; Singapore Polytechnic &bull; All images credited to photographers below each image.
             <span class="footer-credit">Front-End Web Development &mdash; CA1 Project</span>

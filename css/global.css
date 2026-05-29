@@ -1,42 +1,69 @@
-/* ============================================================
-   global.css — shared across all pages
-   ============================================================ */
+/* =====================================================================
+   global.css — Dark Skies SG (SITE-WIDE STYLES)
+   ---------------------------------------------------------------------
+   Purpose : Foundational/shared styles used by EVERY page on the site.
+             Includes the CSS reset, typography, header, navigation,
+             section/card primitives, the .starry-night hero banner, the
+             button system, and the footer.
+   Loaded  : First on every page (before page-specific CSS files).
+   ===================================================================== */
 
-/* --- Reset & base ----------------------------------------- */
+
+/* ---------------------------------------------------------------------
+   CSS RESET (universal selector + pseudo-elements)
+   --------------------------------------------------------------------- 
+   Removes browsers' default margin/padding inconsistencies so the layout
+   starts from a clean baseline. `box-sizing: border-box` makes width
+   include padding & border (much easier to reason about). */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* Enable smooth scrolling when clicking same-page anchor links (e.g.
+   the hero CTAs that jump to #what-is, #impact, #footer, etc.) */
 html { scroll-behavior: smooth; }
 
+
+/* ---------------------------------------------------------------------
+   ROOT FONT SIZE
+   --------------------------------------------------------------------- 
+   Setting the root font-size in px lets every `rem` value below scale
+   together. 14px = compact base for most screens. */
 :root {
     font-size: 14px;
 }
 
+/* On very wide displays (≥1900px), bump the root size up so the design
+   doesn't look tiny on 4K monitors. Every rem-based value scales up. */
 @media (min-width: 1900px) {
     :root { font-size: 20px; }
 }
 
 
+/* ---------------------------------------------------------------------
+   BODY — base typography + dark background + horizontal-scroll guard
+   --------------------------------------------------------------------- */
 body {
-    font-family: 'Raleway', 'Segoe UI', sans-serif;
-    background-color: #0d0d2b;
-    font-size: 1rem;
-    line-height: 1.7;
-    min-width: 62.5rem; /* 1000px */
-    color: #a0a0cc;
-    overflow-x: hidden;
+    font-family: 'Raleway', 'Segoe UI', sans-serif; /* Raleway from Google Fonts; fallback chain */
+    background-color: #0d0d2b;     /* Deep midnight-blue site background */
+    font-size: 1rem;               /* = root font-size (14px or 20px on 4K) */
+    line-height: 1.7;              /* Comfortable reading line-height */
+    min-width: 62.5rem;            /* 1000px — design is not mobile responsive */
+    color: #a0a0cc;                /* Default body text colour (soft lavender-grey) */
+    overflow-x: hidden;            /* Prevent accidental horizontal scrollbar */
 }
 
+
 /* --- Headings --------------------------------------------- */
+/* All headings share the Cinzel serif font for the "celestial" feel */
 h1, h2, h3, h4 {
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 700;
     line-height: 1.2;
-    letter-spacing: 0.03em;
-    color: #f0f0ff;
+    letter-spacing: 0.03em;       /* Slight tracking for elegance */
+    color: #f0f0ff;                /* Near-white for strong contrast on dark bg */
 }
 
 h2 { font-size: 2.5rem; }
-h2 span { color: #a29bfe; }
+h2 span { color: #a29bfe; }       /* Spans inside h2 are highlighted in violet */
 
 h3 { font-size: 1.4rem; margin-bottom: 1rem; }
 
@@ -44,49 +71,60 @@ h4{
     font-size: 1.2rem;
 }
 
+/* <strong> and <em> get unique colours for visual emphasis */
 strong { 
-    color: #f0f0ff;
+    color: #f0f0ff;                /* Bright white — stands out from body text */
     font-weight: 600;
 }
-em { color: #74b9ff; }
+em { color: #74b9ff; }             /* Soft sky-blue for italic emphasis */
 
+/* --- Links (base) ----------------------------------------- */
 a {
-    color: #74b9ff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    color: #74b9ff;                /* Sky-blue link colour */
+    text-decoration: none;         /* No underline by default */
+    transition: color 0.5s ease;   /* Smooth colour transition on hover */
 }
 
+/* Cute "list dimming" interaction:
+   When the user hovers a <ul>, all <a>s inside dim — except the one
+   actually being hovered (handled by the rule below). This creates a
+   focus effect drawing attention to the link currently under the cursor. */
 ul:hover a {
     opacity: 0.4;
     transition: opacity 0.3s ease-in-out;
 }
 
+/* The actually-hovered link in a list stays fully opaque */
 ul a:hover {
     opacity: 1;
 }
-a:hover { color: #a29bfe; }
+a:hover { color: #a29bfe; }        /* Hover colour shifts to violet */
 
-figcaption { color: #a0a0cc; }
+figcaption { color: #a0a0cc; }     /* Captions in the same muted body colour */
 
 /* --- Header ----------------------------------------------- */
+/* Sticky header that stays at the top of the viewport when scrolling.
+   High z-index ensures it sits above page content. */
 header {
     position: sticky;
     top: 0;
     z-index: 999;
-    background-color: #0a0a22;
-    border-bottom: 1px solid rgba(162,155,254,.25);
-    box-shadow: 0 0.25rem 2.5rem rgba(255,255,255,0.3);
+    background-color: #0a0a22;     /* Slightly darker than body for contrast */
+    border-bottom: 1px solid rgba(162,155,254,.25);  /* Faint violet divider */
+    box-shadow: 0 0.25rem 2.5rem rgba(255,255,255,0.3); /* Subtle glow drop */
     overflow-x: hidden;
 }
 
+/* Inner header container: caps width and centres content,
+   uses flexbox to split logo (left) from nav (right) */
 header > div {
-    max-width: 75rem; /* 1200px */
-    margin: 0 auto;
-    padding: 0 2rem;
-    height: 4.25rem; /* 68px */
+    max-width: 75rem;              /* 1200px — limits content width on big screens */
+    margin: 0 auto;                /* Horizontally centre */
+    padding: 0 2rem;               /* Left/right breathing room */
+    height: 4.25rem;               /* 68px header height */
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Logo left, nav right */
 }
 
 /* --- Logo ------------------------------------------------- */
@@ -98,19 +136,24 @@ header > div {
     letter-spacing: 0.08em;
     text-decoration: none;
 }
+/* Decorative gold star (✦) prepended to the logo text */
 .logo::before { content: "✦ "; color: #fdcb6e; }
+
+/* Logo hover: subtle violet tint + slight fade */
 .logo:hover { color: #a29bfe; opacity: .9; }
 
 /* --- Nav -------------------------------------------------- */
+/* Nav list rendered horizontally with small gap between items */
 nav ul {
-    list-style: none;
+    list-style: none;              /* Remove bullet points */
     display: flex;
     gap: 0.25rem;
     align-items: center;
 }
 
+/* Each nav link: pill-shaped uppercase label */
 nav a {
-    display: block;
+    display: block;                /* Allows padding to apply cleanly */
     padding: 0.4rem 1rem;
     font-size: 0.8rem;
     font-weight: 700;
@@ -118,35 +161,44 @@ nav a {
     text-transform: uppercase;
     color: #a0a0cc;
     text-decoration: none;
-    border-radius: 0.375rem; /* 6px */
-    white-space: nowrap;
+    border-radius: 0.375rem;       /* 6px rounded corners */
+    white-space: nowrap;           /* Prevent labels from wrapping */
     transition: color .2s, background-color .2s;
 }
+/* Hover: subtle dark-violet pill background */
 nav a:hover { background-color: #181848; color: #f0f0ff; }
+/* Active page: filled violet pill with dark text */
 nav a.active { background-color: #a29bfe; color: #07071a; }
 
 /* --- Sections --------------------------------------------- */
+/* Default vertical rhythm for all <section>s */
 section { padding: 5rem 2rem; } /* 80px 2rem */
 
+/* Optional darker section variant (used on the "Who does it hurt?" block) */
 .section-dark { background-color: #0a0a22; }
 
 /* Section tag (small label above heading) */
+/* Small UPPERCASE caption appearing above the main heading of a section.
+   Acts as a visual "kicker" — gives context before the H2. */
 .section-tag {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 1rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.2em;        /* Wide tracking for the small-caps look */
     text-transform: uppercase;
     color: #a29bfe;
 }
 
 /* Centred section header block */
+/* Wrapper used to centre a section's heading group (tag + h2 + intro p) */
 .section-head {
     text-align: center;
     margin-bottom: 3rem;
 }
 
+/* Decorative gradient underline drawn below the section heading.
+   Created with ::after pseudo-element — pure CSS, no extra markup. */
 .section-head::after {
     content: "";
     display: block;
@@ -155,8 +207,9 @@ section { padding: 5rem 2rem; } /* 80px 2rem */
     margin-top: 1rem;
     width: 3.75rem;   /* 60px */
     height: 0.1875rem; /* 3px */
-    border-radius: 3.125rem; /* 50px */
+    border-radius: 3.125rem; /* 50px — fully rounded ends */
 }
+/* Centred intro paragraph constrained to readable line length */
 .section-head p {
     max-width: 37.5rem; /* 600px */
     margin: 0.4rem auto 0;
@@ -164,21 +217,25 @@ section { padding: 5rem 2rem; } /* 80px 2rem */
 }
 
 /* --- Cards (shared base) ---------------------------------- */
+/* Common visual style applied to both the impact cards (.card) on the
+   homepage and the case study cards (.case-card). Subtle violet border,
+   dark navy fill, internal padding. Hover effects are added in index.css. */
 .card, .case-card {
     background-color: #12123a;
     border: 1px solid rgba(162,155,254,.25);
-    border-radius: 0.75rem; /* 12px */
+    border-radius: 0.75rem;        /* 12px */
     padding: 1rem;
     display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
+    flex-direction: column;        /* Stack image, heading, text vertically */
+    overflow: hidden;              /* Clip any oversized child content */
+    position: relative;            /* Establish positioning context */
 }
 
+/* Cover images at the top of each card — cropped to fixed height */
 .card img, .case-card img {
     width: 100%;
     height: 20rem; /* 320px */
-    object-fit: cover;
+    object-fit: cover;             /* Crop to fill without distortion */
 }
 
 .card p, .case-card p {
@@ -186,8 +243,10 @@ section { padding: 5rem 2rem; } /* 80px 2rem */
 }
 
 /* --- Tags ------------------------------------------------- */
+/* Container for the row of tag pills (e.g. "Energy Waste", "Biodiversity Loss") */
 .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
 
+/* Individual tag pill */
 .tag {
     display: inline-block;
     padding: 0.35rem 0.9rem;
@@ -195,25 +254,28 @@ section { padding: 5rem 2rem; } /* 80px 2rem */
     font-weight: 600;
     letter-spacing: 0.05em;
     border: 1px solid rgba(162,155,254,.25);
-    border-radius: 6.25rem; /* 100px */
+    border-radius: 6.25rem;        /* 100px — fully pill-shaped */
     color: #a0a0cc;
     background-color: #12123a;
     transition: border-color .3s, color .3s;
-    cursor: default;
+    cursor: default;               /* Override pointer — these aren't links */
 }
+/* Tag hover: lights up in violet */
 .tag:hover { border-color: #a29bfe; color: #a29bfe; }
 
 /* --- Highlight box ---------------------------------------- */
+/* Re-usable "call-out" box with a thick left border, used to spotlight
+   key paragraphs or CTAs throughout the site. */
 .highlight-box {
     display: block;
     align-items: flex-start;
-    max-width: 71.875rem; /* 1150px */
+    max-width: 71.875rem;          /* 1150px content width cap */
     margin: 1.5rem auto;
     padding: 1.25rem;
-    background-color: rgba(162,155,254,.06);
+    background-color: rgba(162,155,254,.06);  /* Very subtle violet wash */
     border: 1px solid rgba(162,155,254,.25);
-    border-left: 0.25rem solid #a29bfe; /* 4px */
-    border-radius: 0 1.25rem 1.25rem 0; /* 0 20px 20px 0 */
+    border-left: 0.25rem solid #a29bfe; /* 4px accent stripe on the left */
+    border-radius: 0 1.25rem 1.25rem 0; /* Square left, rounded right */
     color: #a0a0cc;
     font-size: 1.25rem;
 }
@@ -221,24 +283,35 @@ section { padding: 5rem 2rem; } /* 80px 2rem */
     margin-bottom: 1rem;
     font-size: 1.25rem;
 }
+
+/* Utility class to colour any text in the signature violet accent */
 .text-violet { color: #a29bfe; }
 
 
 
+/* =====================================================================
+   STARRY-NIGHT HERO BANNER — used as the intro section on every page
+   ===================================================================== */
 .starry-night {
-    min-height: 100vh;
+    min-height: 100vh;             /* Always at least full viewport height */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 4rem;
+    /* Two stacked backgrounds:
+       1) A semi-transparent navy overlay to darken the GIF
+       2) The animated stars.gif underneath
+       The overlay is needed so heading text stays readable over the
+       moving star background. */
     background-image:
         linear-gradient(rgba(7,7,26,.62), rgba(7,7,26,.62)),
-        url("https://usagif.com/wp-content/uploads/gifs/starfall-gif-46.gif");
+        url("/images/stars.gif");
     background-size: cover;
     background-position: center;
 }
 
+/* Inner wrapper inside the hero — caps width and centres content */
 .starry-night > div {
     max-width: 100rem;
     width: 100%;
@@ -246,11 +319,15 @@ section { padding: 5rem 2rem; } /* 80px 2rem */
     margin-top: 0;
 }
 
+/* Tiered heading sizes: outer h1 small, middle span bigger,
+   inner span (e.g. the word "Stars?") biggest — creates a dramatic
+   typographic hierarchy in the hero. */
 .starry-night h1 { font-size: 2.5rem; }
 .starry-night h1 > span { font-size: 3.5rem; color: #a29bfe; }
 .starry-night h1 span span { font-size: 4.5rem; }
 
 /* Banner label pill */
+/* Small pill above the hero headline (e.g. "Light Pollution & Dark Sky Conservation") */
 .banner-label {
     display: inline-block;
     margin-bottom: 1rem;
@@ -261,31 +338,34 @@ section { padding: 5rem 2rem; } /* 80px 2rem */
     text-transform: uppercase;
     color: #a29bfe;
     border: 1px solid rgba(162,155,254,.25);
-    border-radius: 6.25rem; /* 100px */
+    border-radius: 6.25rem;        /* 100px — pill */
     background-color: rgba(162,155,254,.08);
 }
     
 /* Subtitle */
+/* Hero subtitle paragraph beneath the headline */
 .starry-night p {
     font-size: 0.9rem;
-    max-width: 35rem; /* 560px */
+    max-width: 35rem; /* 560px — keeps the line length readable */
     margin: 0 auto 2rem;
     line-height: 1.8;
 
 }
 
 /* CTA buttons */
+/* Row of buttons inside the hero — uses flex to centre them horizontally */
 .button-row {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap;               /* Stack on very narrow viewports */
 }
 
+/* Shared button base style (applied to both .btn-primary and .btn-outline) */
 .button-row a {
     display: inline-block;
     padding: 0.85rem 2rem;
-    border-radius: 6.25rem; /* 100px */
+    border-radius: 6.25rem;        /* 100px — pill */
     font-size: 0.88rem;
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -293,18 +373,22 @@ section { padding: 5rem 2rem; } /* 80px 2rem */
     text-decoration: none;
     transition: transform .2s, background-color .2s, box-shadow 0.5s ease;
 }
+/* Hover lift effect — subtle upward shift suggests interactivity */
 .button-row a:hover { transform: translateY(-0.125rem); } /* -2px */
 
+/* Solid violet button (primary CTA) */
 .btn-primary {
     background-color: #a29bfe;
     color: #07071a;
 }
+/* Primary button hover: darker violet + glowing box-shadow halo */
 .btn-primary:hover { 
     background-color: #8b82ee; 
     color: #07071a;
     box-shadow: 0 0 0.5rem #8b82ee, 0 0 1rem #8b82ee; /* 8px, 16px */
 }
 
+/* Outline button (secondary CTA) — transparent fill with violet border */
 .btn-outline {
     background-color: transparent;
     color: #a29bfe;
@@ -313,12 +397,20 @@ section { padding: 5rem 2rem; } /* 80px 2rem */
     border-radius: 50px;
     transition: box-shadow 0.3s ease;
 }
+/* Outline button hover: tinted fill + matching glow halo */
 .btn-outline:hover { 
     background-color: rgba(162,155,254,.12); 
     color: #a29bfe;
     box-shadow: 0 0 0.5rem #8b82ee, 0 0 1rem #8b82ee;
 }
 
+/* =====================================================================
+   FOOTER
+   ===================================================================== */
+
+/* Decorative gradient stripe at the very top of the footer.
+   Drawn as a ::before pseudo-element so no extra HTML is needed.
+   Fades from transparent → violet → gold → violet → transparent. */
 footer::before{
     content: '';
     position: absolute;
@@ -336,34 +428,43 @@ footer::before{
     margin-bottom: 2rem;
 }
 
+/* Footer container — position: relative anchors the ::before stripe above */
 footer{
     position: relative;
     padding: 4rem 2rem;
     padding-bottom: 4rem;
 }
+
+/* Three-column footer grid (brand | explore | resources) */
 .footer-grid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
     margin: 0 3rem;
+    margin-bottom: 5rem;
 }
 
+/* Add extra right-padding to the first column so the brand block
+   doesn't crowd the navigation column */
 .footer-grid>div:nth-child(1){
     padding-right: 20rem;
 }
 
 
+/* Tagline paragraph below the brand */
 .footer-grid > div:nth-child(1) p {
     margin-top:1rem;
     margin-bottom: 1rem;
 }
 
+/* Email/phone list under the brand — no bullets, tight padding */
 .footer-socials{
     white-space: nowrap;
     padding: 1.5rem 0;
     list-style-type: none;
 }
 
+/* Lists inside the "Explore" and "Resources" columns */
 .footer-col ul{
     list-style-type: none;
 }
@@ -375,16 +476,24 @@ footer{
     padding: 0.5rem 0;
 }
 
+/* display:flex on the <a> ensures clickable area fills the list-item width */
+.footer-col ul li a{
+    display: flex;
+}
+
+/* Horizontal rule above the copyright line */
 hr{
     border: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.25);
 }
 
+/* Copyright line below the divider */
 .footer-bottom{
     padding-top: 2rem;
     white-space: nowrap;
 }
 
+/* "Front-End Web Development — CA1 Project" credit floated to the right */
 .footer-credit{
     float: right;
 }
